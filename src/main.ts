@@ -5,7 +5,15 @@ import { AppModule } from './app.module.js';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const allowedOrigins = [process.env.FRONTEND_URL ?? 'https://jobqueuemanager.netlify.app'];
+  const configuredOrigins = (process.env.FRONTEND_URL ?? '')
+    .split(',')
+    .map((origin) => origin.trim().replace(/\/$/, ''))
+    .filter(Boolean);
+  const allowedOrigins = [
+    'http://localhost:5173',
+    'https://jobqueuemanager.netlify.app',
+    ...configuredOrigins,
+  ];
 
   app.enableCors({
     origin: allowedOrigins,
