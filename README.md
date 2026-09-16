@@ -69,6 +69,8 @@ http://localhost:3000
 
 The port can be changed with the `PORT` environment variable. The SQLite database is created automatically at `data/jobs.sqlite`.
 
+Set `FRONTEND_URL` to the deployed frontend origin so the API allows browser requests from it. For Render, add `FRONTEND_URL=https://jobqueuemanager.netlify.app` in the service environment variables.
+
 ## Available Scripts
 
 ```bash
